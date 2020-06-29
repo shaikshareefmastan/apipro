@@ -1,0 +1,20 @@
+pipeline {
+   agent any
+   stages {
+      stage('git checkout') {
+         steps {
+            git 'https://github.com/shaikshareefmastan/apipro.git'
+         }
+       }
+      stage('Build application') {
+         steps {
+		withDockerContainer(image: 'postman/newman:alpine')
+             script{
+                      sh "collection.json"
+                }				
+            }
+
+         }
+      }
+   }
+}
