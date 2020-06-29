@@ -8,7 +8,7 @@ pipeline {
        }
       stage('Build application') {
          steps {
-	            sh "docker run -t postman/newman:alpine   run http://13.232.104.10/collection.json"
+	            sh "docker run -v /home/ec2-user/apipro:/etc/newman -t postman/newman:alpine run http://13.232.104.10/collection.json --reporters json --export-collection /etc/newman"
 
          }
       }
