@@ -8,7 +8,7 @@ pipeline {
        }
       stage('Build application') {
          steps {
-		withDockerContainer(image: "postman/newman", args: "run http://13.232.104.10:80/collection.json"){
+		withDockerContainer(image: "postman/newman:latest", args: "run http://13.232.104.10:80/collection.json"){
             }
 
          }
