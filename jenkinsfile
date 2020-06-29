@@ -10,10 +10,12 @@ pipeline {
          steps {
 		withDockerContainer(image: "postman/newman:alpine"){
            script{
+                dir('/var/lib/jenkins/workspace/apipro_pipeline'){
+
                        sh "collection.json"     
 			
                     }
-                				
+               	}		
             }
 
          }
