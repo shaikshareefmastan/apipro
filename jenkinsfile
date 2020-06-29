@@ -8,14 +8,7 @@ pipeline {
        }
       stage('Build application') {
          steps {
-		withDockerContainer(image: "postman/newman:alpine"){
-           script{
-                dir('/var/lib/jenkins/workspace/apipro_pipeline'){
-
-                       sh "run collection.json"     
-			
-                    }
-               	}		
+		withDockerContainer(image: "postman/newman:alpine", args: "run http://13.232.104.10:80/collection.json"){
             }
 
          }
