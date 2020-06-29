@@ -8,11 +8,12 @@ pipeline {
        }
       stage('Build application') {
          steps {
-		withDockerContainer(image: 'postman/newman:alpine'){
-             script{
-                      sh "collection.json"
-                }
-              }				
+		withDockerContainer(image: "postman/newman:alpine"){
+           script{
+                       sh "collection.json"     
+			
+                    }
+                				
             }
 
          }
