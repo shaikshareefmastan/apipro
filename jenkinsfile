@@ -20,7 +20,6 @@ pipeline {
       reportDir: '/var/lib/jenkins/workspace/apipro_pipeline',
       reportFiles: 'myreport.html'
     ])
-                     System.setProperty( "hudson.model.DirectoryBrowserSupport.CSP" , "" )
 
            }
 
