@@ -22,7 +22,7 @@ pipeline {
     ])
 
            }
-         stpes {
+         steps {
                       System.setProperty( "hudson.model.DirectoryBrowserSupport.CSP" , "" )
 }
       }
