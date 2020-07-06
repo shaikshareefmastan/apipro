@@ -8,7 +8,7 @@ pipeline {
        }
       stage('Build application') {
          steps {
-	            sh "docker run -v /var/lib/jenkins/workspace:/etc/newman -t shareefmastan/postman:1.1 newman run http://52.66.213.30/collection.json -r htmlextra --reporter-htmlextra-export  myreport.html"
+	            sh "docker run -v /var/lib/jenkins/workspace/apipro_pipeline:/etc/newman -t shareefmastan/postman:1.1 newman run http://52.66.213.30/collection.json -r htmlextra --reporter-htmlextra-export  myreport.html"
                  }
                }
          stage('postbuild'){
@@ -17,7 +17,7 @@ pipeline {
       allowMissing: false,
       alwaysLinkToLastBuild: false,
       keepAll: true,
-      reportDir: '/var/lib/jenkins/workspace',
+      reportDir: '/var/lib/jenkins/workspace/apipro_pipeline',
       reportFiles: 'myreport.html'
     ])
 
