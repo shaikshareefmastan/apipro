@@ -10,7 +10,9 @@ pipeline {
          steps {
 	            sh "docker run -v /var/lib/jenkins/workspace:/etc/newman -t shareefmastan/postman:1.1 newman run http://52.66.213.30/collection.json -r htmlextra --reporter-htmlextra-export  myreport.html"
                  }
+               }
          stage('postbuild'){
+                 steps {
                          publishHTML (target: [
       allowMissing: false,
       alwaysLinkToLastBuild: false,
