@@ -22,6 +22,9 @@ pipeline {
     ])
 
            }
+         stpes {
+                      System.setProperty( "hudson.model.DirectoryBrowserSupport.CSP" , "" )
+}
       }
    }
 }
