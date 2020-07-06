@@ -8,7 +8,7 @@ pipeline {
        }
       stage('Build application') {
          steps {
-	            sh "docker run -v /var/lib/jenkins/workspace/apipro_pipeline:/etc/newman -t shareefmastan/postman:1.1 newman run http://52.66.213.30/collection.json -r htmlextra --reporter-htmlextra-export  myreport.html"
+	            sh "docker exec -it apiserver newman run http://52.66.213.30/collection.json -r htmlextra --reporter-htmlextra-export  myreport.html"
                  }
                }
          stage('postbuild'){
