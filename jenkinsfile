@@ -1,5 +1,5 @@
 pipeline {
-   agent { label 'kops_server'
+   agent { label 'kopserver'
 }
    stages {
       stage('git checkout') {
@@ -9,7 +9,8 @@ pipeline {
        }
       stage('Build application') {
          steps {
-	            sh "docker exec -i apiserver newman run http://52.66.213.30/collection.json -r htmlextra --reporter-htmlextra-export  myreport.html"
+	            sh "pwd"
+                    sh "ls -la"
                  }
                }
    }
