@@ -11,7 +11,9 @@ pipeline {
             git 'https://github.com/shaikshareefmastan/apipro.git'
          }
        }
-      stage('Build collection') {
+      stage('parallel build'){
+           parallel {
+      	stage('Build collection') {
             when {
                          expression { params.collection }
                      }
@@ -32,5 +34,7 @@ pipeline {
                     sh "echo af62d5870d4bb4925b07a0807efb9a5c-1873761774.ap-south-1.elb.amazonaws.com/collection1.html"
                }
          }
+       }
+     }
    }
 }
