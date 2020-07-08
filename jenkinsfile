@@ -9,11 +9,9 @@ pipeline {
        }
       stage('Build application') {
          steps {
-            dir('/home/ec2-user/jenkins/workspace/apipro_pipeline'){
 	            sh "pwd"
                     sh "ls -la"
                     sh "cp collection.json /tmp"
-                }
                  }
 
                }
