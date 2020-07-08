@@ -18,7 +18,7 @@ pipeline {
                      }
          steps {
 	            sh "kubectl cp collection.json api-deployment-57f88867b-9mv74:/etc/newman "
-                    sh "kubectl exec api-deployment-57f88867b-9mv74 -- newman run collection.json -r htmlextra --reporter-htmlextra-export /var/www/html/myreport.html"
+                    sh "kubectl exec api-deployment-57f88867b-9mv74 -- newman run collection.json -r htmlextra --reporter-htmlextra-export /var/www/html/collection.html"
                     sh "echo http://ac625dc3455cb424994b623e091ae611-1138222398.ap-south-1.elb.amazonaws.com/collection.html"
                  }
                }
@@ -29,7 +29,7 @@ pipeline {
            steps {
                      
                     sh "kubectl cp collection1.json api-deployment-57f88867b-q92z7:/etc/newman "
-                    sh "kubectl exec api-deployment-57f88867b-q92z7 -- newman run collection1.json -r htmlextra --reporter-htmlextra-export /var/www/html/myreport.html"
+                    sh "kubectl exec api-deployment-57f88867b-q92z7 -- newman run collection1.json -r htmlextra --reporter-htmlextra-export /var/www/html/collection1.html"
                     sh "echo http://ac625dc3455cb424994b623e091ae611-1138222398.ap-south-1.elb.amazonaws.com/collection1.html"
                }
          }
