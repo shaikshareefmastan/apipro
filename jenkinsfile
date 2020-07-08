@@ -1,6 +1,10 @@
 pipeline {
    agent { label 'kopserver'
 }
+    parameters {
+                 booleanParam(defaultValue: false, description: '', name: 'collection')
+                 booleanParam(defaultValue: false, description: '', name: 'collection1')
+            }
    stages {
       stage('git checkout') {
          steps {
@@ -8,14 +12,25 @@ pipeline {
          }
        }
       stage('Build collection') {
+            when {
+                         expression { params.collection }
+                     }
          steps {
-                    sh "kubectl delete -f depoly.yml"
-                    sh "kubectl create -f depoly.yml"
-                    sh  "sleep 120"
-	            sh "kubectl cp collection.json api-pod:/etc/newman "
-                    sh "kubectl exec api-pod -- newman run collection.json -r htmlextra --reporter-htmlextra-export /var/www/html/collection.html"
-                    sh "kubectl get services"
+	            sh "kubectl cp collection.json api-deployment-57f88867b-8bnz4:/etc/newman "
+                    sh "kubectl exec api-deployment-57f88867b-8bnz4 -- newman run collection.json -r htmlextra --reporter-htmlextra-export /var/www/html/collection.html"
+                    sh "echo http://af62d5870d4bb4925b07a0807efb9a5c-1873761774.ap-south-1.elb.amazonaws.com/collection.html"
                  }
                }
+      stage('Build collection1'){
+                  when { 
+                                  expression { params.collection1 }
+                             }
+           steps {
+                     
+                    sh "kubectl cp collection1.json api-deployment-57f88867b-z5fwg:/etc/newman "
+                    sh "kubectl exec api-deployment-57f88867b-z5fwg -- newman run collection1.json -r htmlextra --reporter-htmlextra-export /var/www/html/collection1.html"
+                    sh "echo http://ac625dc3455cb424994b623e091ae611-1138222398.ap-south-1.elb.amazonaws.com/collection1.html"
+               }
+         }
    }
 }
