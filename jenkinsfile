@@ -11,7 +11,7 @@ pipeline {
          steps {
 	            sh "kubectl cp collection.json api-deployment-57f88867b-p7pms:/etc/newman "
                     sh "kubectl exec api-deployment-57f88867b-p7pms -- newman run collection.json -r htmlextra --reporter-htmlextra-export /var/www/html/myreport.html"
-                    sh "echo a3a3e7849cf5f4bdfa10bedc6fa05077-1123284005.ap-south-1.elb.amazonaws.com/myreport.html"
+                    sh "echo http://a3a3e7849cf5f4bdfa10bedc6fa05077-1123284005.ap-south-1.elb.amazonaws.com/myreport.html"
                  }
 
                }
