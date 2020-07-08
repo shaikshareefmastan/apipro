@@ -3,7 +3,7 @@ pipeline {
 }
     parameters {
                  choice(name: 'environment',
-            choices: 'collection.json\ncollection1.jsion',
+            choices: 'collection.json\ncollection1.json',
             description: 'What api file do you choose?')
             }
    stages {
